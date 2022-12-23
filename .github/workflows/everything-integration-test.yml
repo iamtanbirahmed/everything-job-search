@@ -6,7 +6,7 @@
 # separate terms of service, privacy policy, and support
 # documentation.
 
-name: Everything Job Search CI with Maven
+name: Running Integration test
 
 on:
   push:
@@ -16,34 +16,14 @@ on:
 
 jobs:
 
-  test:
+  integration-test:
     runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v3
-      - name: Set up JDK 17
-        uses: actions/setup-java@v3
-        with:
-          java-version: '17'
-          distribution: 'temurin'
-          cache: maven
-      - name: Security check with Snyck
+
+      - name: Setting up mock environment
         run: echo 'Yet to configure'
 
       - name: Unit Test
         run: mvn -B test --file pom.xml
-
-  build:
-
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v3
-      - name: Set up JDK 17
-        uses: actions/setup-java@v3
-        with:
-          java-version: '17'
-          distribution: 'temurin'
-          cache: maven
-      - name: Build with Maven
-        run: mvn -B package --file pom.xml
